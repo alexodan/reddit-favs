@@ -15,13 +15,13 @@ const Home = ({ posts }) => {
         pb: "2rem",
       }}
     >
-      {posts.map(({ author, title, url, created, thumbnail }) => {
+      {posts.map(({ author, title, url, created_utc, thumbnail }) => {
         return (
           <Card
             author={author}
             title={title}
             url={url}
-            created={created}
+            created_utc={created_utc}
             thumbnail={thumbnail}
           />
         );

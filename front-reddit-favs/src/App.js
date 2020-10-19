@@ -11,7 +11,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 // const BASE_URL = `http://localhost:4000/posts`;
-const BASE_URL = `https://www.reddit.com/r/askreddit/top.json`;
+const BASE_URL = `https://www.reddit.com/r/redditdev/top.json`;
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -25,7 +25,7 @@ function App() {
           author: data.author,
           title: data.title,
           url: data.url,
-          created: data.created,
+          created_utc: data.created_utc,
           thumbnail: data.thumbnail,
         }));
         setPosts(topPosts);
