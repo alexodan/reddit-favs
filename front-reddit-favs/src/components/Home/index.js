@@ -1,19 +1,29 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
+import Card from "../Card";
 
 const Home = ({ posts }) => {
   return (
-    <div sx={{ color: "text" }}>
+    <div
+      sx={{
+        color: "text",
+        display: "flex",
+        justifyContent: "space-between",
+        flexWrap: "wrap",
+        mt: "2rem",
+        px: "1rem",
+        pb: "2rem",
+      }}
+    >
       {posts.map(({ author, title, url, created, thumbnail }) => {
-        console.log(`${author}${created}`);
         return (
-          <a href={url} key={`${author}${created}`}>
-            <div sx={{ variant: "containers.card" }}>
-              <h2>{title}</h2>
-              <h3>{author}</h3>
-              <img src={thumbnail} />
-            </div>
-          </a>
+          <Card
+            author={author}
+            title={title}
+            url={url}
+            created={created}
+            thumbnail={thumbnail}
+          />
         );
       })}
     </div>

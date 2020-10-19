@@ -18,10 +18,7 @@ const theme = {
   containers: {
     header: {
       height: "60px",
-      width: "100vw",
       bg: "primary",
-      borderBottom: "1px solid",
-      borderColor: "primary",
     },
     navbar: {
       display: "flex",
@@ -36,6 +33,7 @@ const theme = {
       borderColor: "muted",
       borderRadius: "4px",
       p: 2,
+      width: "325px",
     },
   },
   styles: {

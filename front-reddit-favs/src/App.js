@@ -11,7 +11,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 // const BASE_URL = `http://localhost:4000/posts`;
-const BASE_URL = `https://www.reddit.com/r/redditdev/top.json`;
+const BASE_URL = `https://www.reddit.com/r/askreddit/top.json`;
 
 function App() {
   const [posts, setPosts] = useState([]);
