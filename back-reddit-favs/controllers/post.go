@@ -2,8 +2,8 @@ package controllers
 
 import (
 	"net/http"
+	"reddit-favs/models"
 
-	"github.com/alexodan/reddit-favs/back-reddit-favs/models"
 	"github.com/gin-gonic/gin"
 )
 

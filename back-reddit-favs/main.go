@@ -1,16 +1,16 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+	"reddit-favs/controllers"
+	"reddit-favs/models"
 
-	"github.com/alexodan/reddit-favs/back-reddit-favs/controllers"
-	"github.com/alexodan/reddit-favs/back-reddit-favs/models"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
 	r := gin.Default()
 
-	models.ConnectDatabase()
+	models.ConnectDataBase()
 
 	r.GET("/posts", controllers.FindPosts)
 
