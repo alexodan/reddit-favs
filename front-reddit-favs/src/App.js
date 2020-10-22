@@ -35,16 +35,41 @@ function App() {
           created_utc: data.created_utc,
           thumbnail: data.thumbnail,
           selftext_html: data.selftext_html,
+          faved: false,
+          read: false,
         }));
         setPosts(topPosts);
       });
     return () => {};
   }, []);
 
-  const toggleSplitMode = (id) => {
-    const postToRender = posts.find((p) => p.id === id);
+  const toggleSplitMode = (postId) => {
+    const postToRender = posts.find((p) => p.id === postId);
     setSplitMode(true);
     setPostDetail(postToRender);
+  };
+
+  const toggleFavorite = (postId) => {
+    const updatedPosts = posts.map((p) =>
+      p.id === postId ? { ...p, faved: !p.faved } : p
+    );
+    setPosts(updatedPosts);
+    // optimistic post
+    // fetch("", { method: "POST", body: {} })
+    //   .then((response) => {
+    //     console.log(response);
+    //     return response;
+    //   })
+    //   .then((response) => {
+    //     setPosts(updatedPosts);
+    //   });
+  };
+
+  const toggleRead = (postId) => {
+    const updatedPosts = posts.map((p) =>
+      p.id === postId ? { ...p, read: !p.read } : p
+    );
+    setPosts(updatedPosts);
   };
 
   return (
@@ -93,6 +118,8 @@ function App() {
                     posts={posts}
                     splitMode={splitMode}
                     toggleSplitMode={toggleSplitMode}
+                    toggleFavorite={toggleFavorite}
+                    toggleRead={toggleRead}
                   />
                 )}
               </div>
