@@ -13,6 +13,7 @@ func main() {
 	models.ConnectDataBase()
 
 	r.GET("/posts", controllers.FindPosts)
+	r.POST("/posts", controllers.AddPost)
 
 	r.Run()
 }
