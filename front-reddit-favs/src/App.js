@@ -78,7 +78,7 @@ function App() {
                 {splitMode ? (
                   <SplitPane
                     split="vertical"
-                    defaultSize={500}
+                    defaultSize={400}
                     pane1Style={{ overflow: "scroll", paddingBottom: "2rem" }}
                   >
                     <Posts

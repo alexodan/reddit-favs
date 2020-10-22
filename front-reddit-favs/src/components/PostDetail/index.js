@@ -1,4 +1,5 @@
-import React from "react";
+/** @jsx jsx */
+import { jsx } from "theme-ui";
 
 const htmlDecode = (content) => {
   let e = document.createElement("div");
@@ -9,7 +10,7 @@ const htmlDecode = (content) => {
 const PostDetail = ({ post }) => {
   const { title, thumbnail, selftext_html } = post;
   return (
-    <div sx={{}}>
+    <div sx={{ padding: "2rem" }}>
       <h2>{title}</h2>
       {thumbnail && <img src={thumbnail} alt={title} />}
       <div
