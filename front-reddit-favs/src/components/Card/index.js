@@ -31,7 +31,8 @@ const Card = ({
 
   return (
     <div
-      key={`${author}${created_utc}`}
+      role="presentation"
+      key={`${id}`}
       sx={{
         variant: "containers.card",
         mt: "1rem",
