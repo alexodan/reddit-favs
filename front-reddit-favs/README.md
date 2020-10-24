@@ -1,15 +1,21 @@
-## How to run the project
+# Reddit Favs
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to run the Front End
 
-## Available Scripts
+In the front-reddit-fabs project directory, you can run:
 
-In the project directory, you can run:
+`npm install` and then `npm start`
 
-### `npm start`
+This runs the app in the development mode.
 
-Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
+The page will reload if you make edits.
+
 You will also see any lint errors in the console.
+
+## Running the Back End
+
+Build the image with docker `docker build . -t go-dock`
+
+Run the image `docker run -p 8080:8080 go-dock`
