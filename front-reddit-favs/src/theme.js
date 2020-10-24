@@ -35,6 +35,17 @@ const theme = {
       p: 2,
       width: "325px",
     },
+    gridIcon: {
+      position: "absolute",
+      top: "4.5rem",
+      right: "1.5rem",
+      fontSize: "3rem",
+      borderRadius: "50%",
+      boxShadow: "2px 2px 10px 2px rgba(0,0,0,0.5)",
+      p: ".5rem",
+      cursor: "pointer",
+      zIndex: "2",
+    },
   },
   styles: {
     ...roboto.styles,

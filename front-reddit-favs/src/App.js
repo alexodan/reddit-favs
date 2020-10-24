@@ -13,7 +13,7 @@ import SplitPane from "react-split-pane";
 import PostDetail from "./components/PostDetail";
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
 
-const FAV_POSTS_URL = `http://localhost:4000/posts`;
+const FAV_POSTS_URL = `http://localhost:8080/posts`;
 const BASE_URL = `https://www.reddit.com/r/redditdev/top.json`;
 
 function App() {
@@ -42,6 +42,7 @@ function App() {
       });
     fetch(FAV_POSTS_URL)
       .then((res) => res.json())
+      .then((posts) => (console.log(posts), posts))
       .then((favPosts) => setFavoritePosts(favPosts));
     return () => {};
   }, []);
@@ -57,20 +58,23 @@ function App() {
       p.id === postId ? { ...p, faved: !p.faved } : p
     );
     const favedPost = posts.find((p) => p.id === postId);
+    setPosts(updatedPosts);
     fetch(FAV_POSTS_URL, {
       method: "POST",
-      body: {
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
         author: favedPost.author,
         title: favedPost.title,
         url: favedPost.url,
-      },
+      }),
     })
-      .then((response) => {
-        console.log(response);
-        return response;
-      })
+      .then((response) => response.json())
       .then((newPost) => {
-        setPosts([newPost, ...favoritePosts]);
+        console.log(newPost);
+        setFavoritePosts([newPost, ...favoritePosts]);
       });
   };
 
@@ -90,17 +94,7 @@ function App() {
           {splitMode && (
             <BsFillGrid3X3GapFill
               onClick={() => setSplitMode(false)}
-              sx={{
-                position: "absolute",
-                top: "4.5rem",
-                right: "1.5rem",
-                fontSize: "3rem",
-                borderRadius: "50%",
-                boxShadow: "2px 2px 10px 2px rgba(0,0,0,0.5)",
-                p: ".5rem",
-                cursor: "pointer",
-                zIndex: "2",
-              }}
+              sx={{ variant: "containers.gridIcon" }}
             />
           )}
           <Switch>
