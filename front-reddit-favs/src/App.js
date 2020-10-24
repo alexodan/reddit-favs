@@ -13,7 +13,7 @@ import SplitPane from "react-split-pane";
 import PostDetail from "./components/PostDetail";
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
 
-// const BASE_URL = `http://localhost:4000/posts`;
+const FAV_POSTS_URL = `http://localhost:4000/posts`;
 const BASE_URL = `https://www.reddit.com/r/redditdev/top.json`;
 
 function App() {
@@ -40,6 +40,9 @@ function App() {
         }));
         setPosts(topPosts);
       });
+    fetch(FAV_POSTS_URL)
+      .then((res) => res.json())
+      .then((favPosts) => setFavoritePosts(favPosts));
     return () => {};
   }, []);
 
@@ -53,16 +56,22 @@ function App() {
     const updatedPosts = posts.map((p) =>
       p.id === postId ? { ...p, faved: !p.faved } : p
     );
-    setPosts(updatedPosts);
-    // optimistic post
-    // fetch("", { method: "POST", body: {} })
-    //   .then((response) => {
-    //     console.log(response);
-    //     return response;
-    //   })
-    //   .then((response) => {
-    //     setPosts(updatedPosts);
-    //   });
+    const favedPost = posts.find((p) => p.id === postId);
+    fetch(FAV_POSTS_URL, {
+      method: "POST",
+      body: {
+        author: favedPost.author,
+        title: favedPost.title,
+        url: favedPost.url,
+      },
+    })
+      .then((response) => {
+        console.log(response);
+        return response;
+      })
+      .then((newPost) => {
+        setPosts([newPost, ...favoritePosts]);
+      });
   };
 
   const toggleRead = (postId) => {
