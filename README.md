@@ -2,9 +2,9 @@
 
 ## How to run the Front End
 
-In the front-reddit-fabs project directory, you can run:
+In the front-reddit-favs project directory, you can run:
 
-`npm install` and then `npm start`
+`npm install` and then `npm start`.
 
 This runs the app in the development mode.
 
@@ -16,9 +16,11 @@ You will also see any lint errors in the console.
 
 ## Running the Back End
 
-Build the image with docker `docker build . -t go-dock`
+Go to back-reddit-favs folder.
 
-Run the image `docker run -p 8080:8080 go-dock`
+Build the image with docker `docker build . -t go-dock`.
+
+Run the image `docker run -p 8080:8080 go-dock`.
 
 ## Architectural decisions
 
