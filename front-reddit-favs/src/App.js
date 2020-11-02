@@ -42,7 +42,6 @@ function App() {
       });
     fetch(FAV_POSTS_URL)
       .then((res) => res.json())
-      .then((posts) => (console.log(posts), posts))
       .then((favPosts) => setFavoritePosts(favPosts));
     return () => {};
   }, []);
@@ -99,7 +98,7 @@ function App() {
           )}
           <Switch>
             <Route path="/favorites">
-              <FavoritePosts />
+              <FavoritePosts posts={favoritePosts} />
             </Route>
             <Route path="/">
               <div sx={{ px: "1rem", pb: "2rem" }}>
@@ -108,6 +107,7 @@ function App() {
                     split="vertical"
                     defaultSize={400}
                     pane1Style={{ overflow: "scroll", paddingBottom: "2rem" }}
+                    pane2Style={{ overflow: "scroll", paddingBottom: "2rem" }}
                   >
                     <Posts
                       posts={posts}
