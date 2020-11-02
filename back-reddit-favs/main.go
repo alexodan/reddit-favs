@@ -37,7 +37,6 @@ func main() {
 
 	r.GET("/posts", controllers.FindPosts)
 	r.POST("/posts", controllers.AddPost)
-	// https://medium.com/@etiennerouzeaud/how-to-create-a-basic-restful-api-in-go-c8e032ba3181
 	r.OPTIONS("/posts", optionsUser)
 
 	r.Run()
