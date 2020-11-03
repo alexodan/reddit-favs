@@ -14,7 +14,7 @@ import PostDetail from "./components/PostDetail";
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
 
 const FAV_POSTS_URL = `http://localhost:8080/posts`;
-const BASE_URL = `https://www.reddit.com/r/redditdev/top.json`;
+const BASE_URL = `https://www.reddit.com/r/askreddit/top.json`;
 
 function App() {
   const [posts, setPosts] = useState([]);
